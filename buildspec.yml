@@ -1,0 +1,26 @@
+version: 0.2
+phases:
+  install:
+    runtime-versions:
+      python: 3.8
+    commands:
+      - echo "Installing cfn-lint and taskcat package ....."
+      - pip install cfn-lint
+      - pip install taskcat
+
+  build:
+    commands:
+      - echo "Running cfn-lint to create CloudFormation template ....."
+      - cfn-lint main.yml  # Build projects
+      - echo "Running Taskcat for validating template"
+      - taskcat test run 
+  
+  post_build:
+    commands:
+      - echo "Validation complete"
+
+artifacts:
+  files:
+    - main.yml
+  name: Lab2Artifact                      # Tên artifact được tạo ra
+  discard-paths: no                       # Giữ nguyên cấu trúc file gốc

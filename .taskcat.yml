@@ -1,0 +1,22 @@
+project:
+  name: group15-test
+  
+  regions:
+    - us-east-1
+  template: main.yml
+
+tests:
+  group15-test:
+    template: main.yml
+    parameters: 
+      UniqueName: test
+      KeyName: demo1
+      AllowedSSHIP: 14.187.92.162/32
+      EnvironmentName: TestEnvironment
+      VpcCIDR: 10.0.0.0/16
+      PublicSubnetCIDR: 10.0.0.0/24
+      PrivateSubnetCIDR: 10.0.1.0/24
+    regions:
+      - us-east-1
+    tags:
+      Project: lab1_cloudformation_group15
